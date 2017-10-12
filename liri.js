@@ -1,21 +1,31 @@
-var twitterKeys = require("./keys.js");
-var Twitter = require('twitter');
+var keys = require("./keys.js");
 var command = process.argv[2];
- 
 
-// Twitter Information
-var client = new Twitter({
-  consumer_key: twitterKeys.consumer_key,
-  consumer_secret: twitterKeys.consumer_secret,
-  access_token_key: twitterKeys.access_token_key,
-  access_token_secret: twitterKeys.access_token_secret	
-});
- 
-var params = {screen_name: 'nodejs'};
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  if (!error) {
-    console.log(tweets);
-  }
-});
+switch(command){
+	case "my-tweets":
+		twitter();
+		break;
+	case "spotify-this-song":
+		spotify();
+		break;
+}
 
-console.log(command);
+function twitter (){
+	var Twitter = require('twitter');
+	var client = new Twitter(keys.twitterKeys)
+	var params = {screen_name: 'NUCBimrankazmi', limit: 3};
+
+	client.get('statuses/user_timeline', params, function(error, tweets, response) {
+		if (!error) {
+			tweets.forEach(function(i){
+				console.log("Tweet text: " + i.text);
+				console.log("Created at: " + i.created_at);
+				console.log("----")
+			})
+		}
+	})
+}
+
+function spotify (){
+	console.log("entering spotify");
+}
