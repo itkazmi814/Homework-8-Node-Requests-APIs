@@ -1,0 +1,24 @@
+{
+  "name": "homework-8-node-requests-apis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itkazmi814/Homework-8-Node-Requests-APIs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itkazmi814/Homework-8-Node-Requests-APIs/issues"
+  },
+  "homepage": "https://github.com/itkazmi814/Homework-8-Node-Requests-APIs#readme",
+  "dependencies": {
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
+  }
+}
