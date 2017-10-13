@@ -1,66 +1,14 @@
-This is tweet Twenty-One. Created at: Thu Oct 12 21:18:08 +0000 2017 by user NUCBimrankazmi
-This is tweet Eighteen. Created at: Thu Oct 12 21:17:46 +0000 2017 by user NUCBimrankazmi
-This is tweet Twenty. Created at: Thu Oct 12 21:17:59 +0000 2017 by user NUCBimrankazmi
-This is tweet Seventeen. Created at: Thu Oct 12 21:17:39 +0000 2017 by user NUCBimrankazmi
-This is tweet Nineteen. Created at: Thu Oct 12 21:17:52 +0000 2017 by user NUCBimrankazmi
-This is tweet Sixteen. Created at: Thu Oct 12 21:17:33 +0000 2017 by user NUCBimrankazmi
-This is tweet Thirteen. Created at: Thu Oct 12 21:17:14 +0000 2017 by user NUCBimrankazmi
-This is tweet Twelve. Created at: Thu Oct 12 21:17:09 +0000 2017 by user NUCBimrankazmi
-This is tweet Eleven. Created at: Thu Oct 12 19:57:28 +0000 2017 by user NUCBimrankazmi
-This is tweet Fifteen. Created at: Thu Oct 12 21:17:26 +0000 2017 by user NUCBimrankazmi
-This is tweet Fourteen. Created at: Thu Oct 12 21:17:20 +0000 2017 by user NUCBimrankazmi
-This is tweet Ten. Created at: Thu Oct 12 19:57:00 +0000 2017 by user NUCBimrankazmi
-This is tweet Nine. Created at: Thu Oct 12 19:56:56 +0000 2017 by user NUCBimrankazmi
-This is tweet Six. Created at: Thu Oct 12 19:56:41 +0000 2017 by user NUCBimrankazmi
-This is tweet Seven. Created at: Thu Oct 12 19:56:45 +0000 2017 by user NUCBimrankazmi
-This is tweet Five. Created at: Thu Oct 12 19:56:37 +0000 2017 by user NUCBimrankazmi
-This is tweet Eight. Created at: Thu Oct 12 19:56:51 +0000 2017 by user NUCBimrankazmi
-This is tweet Four. Created at: Thu Oct 12 19:56:31 +0000 2017 by user NUCBimrankazmi
-This is tweet Three. Created at: Thu Oct 12 19:56:27 +0000 2017 by user NUCBimrankazmi
-This is tweet Two. Created at: Thu Oct 12 19:56:22 +0000 2017 by user NUCBimrankazmi
-This is tweet Twenty-One. Created at: Thu Oct 12 21:18:08 +0000 2017 by user NUCBimrankazmi
-This is tweet Twenty. Created at: Thu Oct 12 21:17:59 +0000 2017 by user NUCBimrankazmi
-This is tweet Eighteen. Created at: Thu Oct 12 21:17:46 +0000 2017 by user NUCBimrankazmi
-This is tweet Nineteen. Created at: Thu Oct 12 21:17:52 +0000 2017 by user NUCBimrankazmi
-This is tweet Seventeen. Created at: Thu Oct 12 21:17:39 +0000 2017 by user NUCBimrankazmi
-This is tweet Sixteen. Created at: Thu Oct 12 21:17:33 +0000 2017 by user NUCBimrankazmi
-This is tweet Fifteen. Created at: Thu Oct 12 21:17:26 +0000 2017 by user NUCBimrankazmi
-This is tweet Fourteen. Created at: Thu Oct 12 21:17:20 +0000 2017 by user NUCBimrankazmi
-This is tweet Twelve. Created at: Thu Oct 12 21:17:09 +0000 2017 by user NUCBimrankazmi
-This is tweet Thirteen. Created at: Thu Oct 12 21:17:14 +0000 2017 by user NUCBimrankazmi
-This is tweet Ten. Created at: Thu Oct 12 19:57:00 +0000 2017 by user NUCBimrankazmi
-This is tweet Eleven. Created at: Thu Oct 12 19:57:28 +0000 2017 by user NUCBimrankazmi
-This is tweet Nine. Created at: Thu Oct 12 19:56:56 +0000 2017 by user NUCBimrankazmi
-This is tweet Eight. Created at: Thu Oct 12 19:56:51 +0000 2017 by user NUCBimrankazmi
-This is tweet Seven. Created at: Thu Oct 12 19:56:45 +0000 2017 by user NUCBimrankazmi
-This is tweet Six. Created at: Thu Oct 12 19:56:41 +0000 2017 by user NUCBimrankazmi
-This is tweet Five. Created at: Thu Oct 12 19:56:37 +0000 2017 by user NUCBimrankazmi
-This is tweet Four. Created at: Thu Oct 12 19:56:31 +0000 2017 by user NUCBimrankazmi
-This is tweet Three. Created at: Thu Oct 12 19:56:27 +0000 2017 by user NUCBimrankazmi
-This is tweet Two. Created at: Thu Oct 12 19:56:22 +0000 2017 by user NUCBimrankazmi
-============ RUNNING my-tweets ============
-This is tweet Twenty. Created at: Thu Oct 12 21:17:59 +0000 2017 by user NUCBimrankazmi
-This is tweet Twenty-One. Created at: Thu Oct 12 21:18:08 +0000 2017 by user NUCBimrankazmi
-This is tweet Nineteen. Created at: Thu Oct 12 21:17:52 +0000 2017 by user NUCBimrankazmi
-This is tweet Eighteen. Created at: Thu Oct 12 21:17:46 +0000 2017 by user NUCBimrankazmi
-This is tweet Seventeen. Created at: Thu Oct 12 21:17:39 +0000 2017 by user NUCBimrankazmi
-This is tweet Sixteen. Created at: Thu Oct 12 21:17:33 +0000 2017 by user NUCBimrankazmi
-This is tweet Fourteen. Created at: Thu Oct 12 21:17:20 +0000 2017 by user NUCBimrankazmi
-This is tweet Fifteen. Created at: Thu Oct 12 21:17:26 +0000 2017 by user NUCBimrankazmi
-This is tweet Thirteen. Created at: Thu Oct 12 21:17:14 +0000 2017 by user NUCBimrankazmi
-This is tweet Eleven. Created at: Thu Oct 12 19:57:28 +0000 2017 by user NUCBimrankazmi
-This is tweet Twelve. Created at: Thu Oct 12 21:17:09 +0000 2017 by user NUCBimrankazmi
-This is tweet Nine. Created at: Thu Oct 12 19:56:56 +0000 2017 by user NUCBimrankazmi
-This is tweet Ten. Created at: Thu Oct 12 19:57:00 +0000 2017 by user NUCBimrankazmi
-This is tweet Eight. Created at: Thu Oct 12 19:56:51 +0000 2017 by user NUCBimrankazmi
-This is tweet Seven. Created at: Thu Oct 12 19:56:45 +0000 2017 by user NUCBimrankazmi
-This is tweet Six. Created at: Thu Oct 12 19:56:41 +0000 2017 by user NUCBimrankazmi
-This is tweet Four. Created at: Thu Oct 12 19:56:31 +0000 2017 by user NUCBimrankazmi
-This is tweet Five. Created at: Thu Oct 12 19:56:37 +0000 2017 by user NUCBimrankazmi
-This is tweet Three. Created at: Thu Oct 12 19:56:27 +0000 2017 by user NUCBimrankazmi
-This is tweet Two. Created at: Thu Oct 12 19:56:22 +0000 2017 by user NUCBimrankazmi
 ============ RUNNING spotify-this-song ============
-Song: The Sign
-Artist: Ace of Base
-Preview: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=dbdd55cc1364494dab6639872a408179
-Album: The Sign (US Album) [Remastered]
+
+============ RUNNING movie-this ============
+unchained
+============ RUNNING movie-this ============
+
+============ RUNNING spotify-this-song ============
+spirited away
+============ RUNNING movie-this ============
+spirited away
+============ RUNNING movie-this ============
+wanted
+============ RUNNING spotify-this-song ============
+nope

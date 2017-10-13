@@ -1,6 +1,6 @@
 var keys = require("./keys.js");
 var fs = require("fs")
-var command = process.argv[2];
+var inquirer = require("inquirer")
 
 function twitter () {
 	log("============ RUNNING my-tweets ============")
@@ -10,51 +10,80 @@ function twitter () {
 	//Passes twitterKeys into the Twitter NPM (?)
 	var client = new Twitter(keys.twitterKeys)	
 	//Creates object is parameters used for the twitter search
-	var params = {
-		screen_name: 'NUCBimrankazmi', 
-		limit: 3
-	};
 
-	client.get('statuses/user_timeline', params, function(err, tweets, response) {
-		if (!err) {
-			tweets.forEach(function(i){
-				log(`${i.text}. Created at: ${i.created_at} by user ${i.user.screen_name}`);
-			})
-		}
+	inquirer.prompt([{
+		type: "input",
+		name: "userName",
+		message: "What user would you like to search for?"
+	}]).then(function (answers){
+		var params = {
+			screen_name: answers.userName, 
+			limit: 3
+		};
+
+		log(`Search: ${answers.userName}`)
+
+		client.get('statuses/user_timeline', params, function(err, tweets, response) {
+			if (!err) {
+				tweets.forEach(displayTweets)
+
+			}
+		})		
 	})
+}
+
+function displayTweets (i){
+	console.log("----------------------")
+	console.log(`TWEET: ${i.text}`)
+	console.log(`Created at: ${i.created_at}`)
+	console.log(`By user ${i.user.screen_name}`);
 }
 
 function spotify () {
 	log("============ RUNNING spotify-this-song ============")
-	var Spotify = require('node-spotify-api');
-	var client = new Spotify(keys.spotifyKeys);
-	//Validation of entered song name. Allows multiple words
-	//To do - bugfix involving special characters - specifically '
-	var songName = setSongName()
-
-	client.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
-		if (err) {
-			return console.log('Error occurred: ' + err);
+	inquirer.prompt([
+		{
+			type: "input",
+			name: "songName",
+			message: "What song would you like to search for?"
 		}
-		//Sets artist name. Allows for multiple artists
-		var artists = setArtistName(data);
-		//Displays song information to the console
-		displaySpotifyData(data,artists);
- 	})
+	]).then(function(answers){
+
+		log(answers.songName)
+
+		var Spotify = require('node-spotify-api');
+		var client = new Spotify(keys.spotifyKeys);
+		//Validation of entered song name. Allows multiple words
+		//To do - bugfix involving special characters - specifically '
+		var songName = setSongName(answers)
+
+		client.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
+			if (err) {
+				return console.log('Error occurred: ' + err);
+			}
+			//Sets artist name. Allows for multiple artists
+			var artists = setArtistName(data);
+			//Displays song information to the console
+			displaySpotifyData(data,artists);
+	 	})
+	})
+
 }
 
-function setSongName () {
-	var name = ""
+function setSongName (answers) {
+	// var name = ""
 	//Sets song if no value is entered
-	if(process.argv[3] === undefined){
-		name = "The Sign Ace of Base";
+	console.log("entering setSongName")
+	console.log(answers);
+	if(answers.songName === ""){
+		return "The Sign Ace of Base";
 	}else{
-		//Appends words of the song together into one string
+	/*	//Appends words of the song together into one string
 		for(var i=3; i<process.argv.length;i++)
 			name += process.argv[i] + " "
+	*/
+		return answers.songName;
 	}
-
-	return name;
 }
 
 function setArtistName (data) {
@@ -74,56 +103,64 @@ function setArtistName (data) {
 
 function displaySpotifyData (data,artists) {
 	var dataPath = data.tracks.items[0]
-	log(`Song: ${dataPath.name}`)
-	log(`Artist: ${artists}`)
-	log(`Album: ${dataPath.album.name}`)
-	log(`Preview: ${dataPath.preview_url}`)
+	console.log("----------------------")
+	console.log(`Song: ${dataPath.name}`)
+	console.log(`Artist: ${artists}`)
+	console.log(`Album: ${dataPath.album.name}`)
+	console.log(`Preview: ${dataPath.preview_url}`)
 }
 
 function omdb () {
 	log("============ RUNNING movie-this ============")
 
-	var request = require("request")
+	inquirer.prompt([{
+			type: "input",
+			name: "movieName",
+			message: "What movie do you want to search for?"
+		}]).then(function (answers) {
 
-	var movieName = setMovieName();
+			log(answers.movieName)
 
-	var queryURL = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
+			var request = require("request")
 
-	console.log(queryURL);
+			var movieName = setMovieName(answers);
 
-	request(queryURL, function(err,response,body){
-		if (!err && response.statusCode === 200) {
-			displayMovieData(body)
-		}
-	})
+			var queryURL = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
+			console.log(queryURL);
+
+			request(queryURL, function(err,response,body){
+				if (!err && response.statusCode === 200) {
+					displayMovieData(body)
+				}
+			})	
+		})
 }
 
-function setMovieName () {
-	var name = ""
-
+function setMovieName (answers) {
+	// var name = ""
 	//Sets movie if no value is entered
-	if(process.argv[3] === undefined){
-		name = "Mr. Nobody";
+	if(answers.movieName === ""){
+		return "Mr. Nobody";
 	}else{
-		//Appends words of the song together into one string
+		/*//Appends words of the song together into one string
 		for(var i=3; i<process.argv.length;i++)
 			name += process.argv[i] + " "
+		*/
+		return answers.movieName
 	}
-
-	return name;
 }
 
 function displayMovieData (body) {
 	var pBody = JSON.parse(body)
-
-	log(`Title: ${pBody.Title}`)
-	log(`Year: ${pBody.Year}`)
-	log(`IMDB Rating: ${pBody.imdbRating}`)
-	log(`RT Rating: ${pBody.Ratings[1].Value}`)
-	log(`Country: ${pBody.Country}`)
-	log(`Language: ${pBody.Language}`)
-	log(`Plot: ${pBody.Plot}`)
-	log(`Actors: ${pBody.Actors}`)
+	console.log("----------------------")
+	console.log(`Title: ${pBody.Title}`)
+	console.log(`Year: ${pBody.Year}`)
+	console.log(`IMDB Rating: ${pBody.imdbRating}`)
+	console.log(`RT Rating: ${pBody.Ratings[1].Value}`)
+	console.log(`Country: ${pBody.Country}`)
+	console.log(`Language: ${pBody.Language}`)
+	console.log(`Plot: ${pBody.Plot}`)
+	console.log(`Actors: ${pBody.Actors}`)
 }
 
 function doIt () {
@@ -133,8 +170,8 @@ function doIt () {
 		}
 
 		var dataArr = data.split(",");
-		command = dataArr[0]
-		process.argv[3] = dataArr[1]
+		var command = dataArr[0]
+		// process.argv[3] = dataArr[1]
 
 		runCommand(command);
 	})
@@ -166,11 +203,21 @@ function runCommand (cmd) {
 
 function log(message) {
 	console.log(message)
-
 	fs.appendFile("log.txt", message+"\n", function (err){
 		if(err) return console.log(err)
 	})	
 }
 
-runCommand(command);
+inquirer.prompt([
+	{
+		type: "list",
+		name: "command",
+		message: "What would you like to do?",
+		choices: ["my-tweets","spotify-this-song","movie-this","do-what-it-says"]
+	}
+]).then(function(answers){
+	runCommand(answers.command)
+})
+
+
 
