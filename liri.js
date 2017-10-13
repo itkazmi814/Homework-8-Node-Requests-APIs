@@ -6,10 +6,47 @@ switch(command){
 		twitter();
 		break;
 	case "spotify-this-song":
-		spotify(process.argv[3]);
+		spotify();
 		break;
 	default:
 		console.log("Enter a proper command")
+}
+
+function setSongName () {
+	var name = ""
+	//Sets song if no value is entered
+	if(process.argv[3] === undefined){
+		name = "The Sign Ace of Base";
+	}else{
+		//Appends words of the song together into one string
+		for(var i=3; i<process.argv.length;i++)
+			name += process.argv[i] + " "
+	}
+
+	return name;
+}
+
+function setArtistName (data) {
+	//Sets path to artist information
+	var artists = data.tracks.items[0].album.artists;
+	//Sets name of first artist listed
+	var string = artists[0].name
+	
+	//Creates a list of artists, if multiple
+	if(artists.length > 1){
+		for(var i=1; i<artists.length; i++)
+			string += `, ${artists[i].name}`;
+	}
+	
+	return string;
+}
+
+function displaySpotifyData (data,artists) {
+	var dataPath = data.tracks.items[0]
+	console.log(`Song: ${dataPath.name}`)
+	console.log(`Artist: ${artists}`)
+	console.log(`Album: ${dataPath.album.name}`)
+	console.log(`Preview: ${dataPath.preview_url}`)
 }
 
 function twitter (){
@@ -34,41 +71,21 @@ function twitter (){
 	})
 }
 
-function spotify (songName){
+function spotify (){
 	var Spotify = require('node-spotify-api');
 	var client = new Spotify(keys.spotifyKeys);
+	//Validation of entered song name. Allows multiple words
+	//To do - bugfix involving special characters - specifically '
+	var songName = setSongName()
 
-	if(songName === undefined){
-		songName = "The Sign Ace of Base"
-	}
-
-	songName = "Despacito";
-
-	//Establish logic to allow query to have spaces for purposes of process.argv[3]
-	
-	//if no song name given, default to "The Sign" by Ace of Base
-	
-	//since there are multiple artists to a song - create a for loop that iterates through artists
-	//append artists[i].name to a new array
-	//print that array as a String and return
-	 
 	client.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
 		if (err) {
 			return console.log('Error occurred: ' + err);
 		}
-
-		var artists;
-		var artistsStr;
-
-
-		console.log(data.tracks.items[0].album.artists[0])
-
-		// var dataPath = data.tracks.items[0]
-
-		// console.log(`Song: ${dataPath.name}`)
-		// console.log(`Artist: ${dataPath.artists[0].name}`)
-		// console.log(`Album: ${dataPath.album.name}`)
-		// console.log(`Preview: ${dataPath.preview_url}`)
-
+		//Sets artist name. Allows for multiple artists
+		var artists = setArtistName(data);
+		//Displays song information to the console
+		displaySpotifyData(data,artists);
  	})
 };
+
