@@ -34,7 +34,7 @@ function twitter () {
 
 function displayTweets (i){
 	console.log("----------------------")
-	console.log(`TWEET: ${i.text}`)
+	console.log(`Tweet: ${i.text}`)
 	console.log(`Created at: ${i.created_at}`)
 	console.log(`By user ${i.user.screen_name}`);
 }
@@ -49,13 +49,13 @@ function spotify () {
 		}
 	]).then(function(answers){
 
-		log(answers.songName)
 
 		var Spotify = require('node-spotify-api');
 		var client = new Spotify(keys.spotifyKeys);
 		//Validation of entered song name. Allows multiple words
 		//To do - bugfix involving special characters - specifically '
 		var songName = setSongName(answers)
+		log(songName)
 
 		client.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
 			if (err) {
@@ -67,14 +67,11 @@ function spotify () {
 			displaySpotifyData(data,artists);
 	 	})
 	})
-
 }
 
 function setSongName (answers) {
 	// var name = ""
 	//Sets song if no value is entered
-	console.log("entering setSongName")
-	console.log(answers);
 	if(answers.songName === ""){
 		return "The Sign Ace of Base";
 	}else{
@@ -107,7 +104,11 @@ function displaySpotifyData (data,artists) {
 	console.log(`Song: ${dataPath.name}`)
 	console.log(`Artist: ${artists}`)
 	console.log(`Album: ${dataPath.album.name}`)
-	console.log(`Preview: ${dataPath.preview_url}`)
+	if(dataPath.preview_url !== null){
+		console.log(`Preview: ${dataPath.preview_url}`)
+	}else{
+		console.log(`Preview: Link is not available`)
+	}
 }
 
 function omdb () {
@@ -119,11 +120,11 @@ function omdb () {
 			message: "What movie do you want to search for?"
 		}]).then(function (answers) {
 
-			log(answers.movieName)
 
 			var request = require("request")
 
 			var movieName = setMovieName(answers);
+			log(movieName)
 
 			var queryURL = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
 			console.log(queryURL);
